@@ -261,7 +261,7 @@ export default function Home() {
           </nav>
 
           <div className="header-actions">
-            <a href="#contacto" className="btn btn-outline">Solicitar asesoría</a>
+            <a href="#contacto" className="btn btn-outline">Asesoría</a>
             <a href="https://wa.me/50663939073" className="btn btn-primary">WhatsApp</a>
           </div>
         </div>
@@ -272,12 +272,11 @@ export default function Home() {
           <div className="hero-copy fade-up">
             <span className="eyebrow">Logística internacional, aduanas y courier</span>
 
-            <h1>Operación confiable para empresas y clientes que necesitan resultados reales.</h1>
+            <h1>Logística confiable para mover tu operación con seguridad.</h1>
 
             <p>
-              Más de 20 años de experiencia integrando courier internacional, agencia aduanal,
-              transporte y soluciones empresariales con una red de aliados estratégicos para
-              importar y exportar a casi todo el mundo.
+              Integramos courier internacional, aduanas, transporte y soluciones empresariales
+              con más de 20 años de experiencia y una red de aliados estratégicos globales.
             </p>
 
             <div className="hero-actions">
