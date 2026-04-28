@@ -1565,3 +1565,72 @@ section[id] {
     display: none;
   }
 }
+
+
+/* =========================================================
+   ULTRA CLEAN TRANSITIONS
+   Elimina solapamientos y artefactos visuales entre hero/cards
+   ========================================================= */
+
+/* Evita que el hero se meta visualmente debajo de los beneficios */
+.hero {
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* La sección de confianza ya no se monta sobre el hero */
+.trust-bar {
+  margin-top: 0 !important;
+  padding-top: 38px;
+  padding-bottom: 42px;
+  background: #ffffff;
+  position: relative;
+  z-index: 4;
+}
+
+/* Limpieza total detrás de las cards */
+.trust-bar::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #ffffff;
+  z-index: -1;
+}
+
+/* Cards más limpias y premium */
+.trust-item {
+  background: #ffffff;
+  box-shadow: 0 18px 44px rgba(9, 30, 20, 0.06);
+}
+
+/* La barra de confianza queda como transición sobria */
+.trust-strip {
+  background: #ffffff;
+  border-bottom: 1px solid rgba(221, 230, 226, 0.8);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Accesos rápidos con corte limpio después de beneficios */
+.quick-access-section {
+  background: #f4f8f6;
+  border-top: 1px solid rgba(221, 230, 226, 0.75);
+  border-bottom: 1px solid rgba(221, 230, 226, 0.85);
+}
+
+/* Reduce separación visual innecesaria tras el hero */
+.hero-minimal {
+  padding-bottom: 58px;
+}
+
+/* Ajuste responsive ultra clean */
+@media (max-width: 860px) {
+  .trust-bar {
+    padding-top: 28px;
+    padding-bottom: 32px;
+  }
+
+  .hero-minimal {
+    padding-bottom: 48px;
+  }
+}

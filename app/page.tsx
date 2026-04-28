@@ -543,7 +543,7 @@ export default function Home() {
 
             <div className="content-actions">
               <a href="#contacto" className="btn btn-gold">Solicitar propuesta</a>
-              <a href="mailto:info@jiasesoria.com" className="btn btn-ghost">info@jiasesoria.com</a>
+              <a href="mailto:info@couriercr.com" className="btn btn-ghost">info@couriercr.com</a>
             </div>
           </div>
 
