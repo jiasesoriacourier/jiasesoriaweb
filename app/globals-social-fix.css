@@ -1,0 +1,72 @@
+/* =========================================================
+   FIX: header/footer duplicados, WEBP e iconos sociales
+   ========================================================= */
+
+.social-links {
+  display: none;
+}
+
+.social-follow {
+  margin-top: 22px;
+}
+
+.social-follow strong {
+  display: block;
+  max-width: 320px;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 14px;
+  line-height: 1.55;
+  font-weight: 750;
+}
+
+.social-icons {
+  margin-top: 14px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.social-icons a {
+  width: 42px;
+  height: 42px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.09);
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  transition: transform 0.22s ease, background 0.22s ease, box-shadow 0.22s ease;
+}
+
+.social-icons a:hover {
+  transform: translateY(-3px);
+  background: var(--green-main);
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.2);
+}
+
+.social-icons svg {
+  width: 22px;
+  height: 22px;
+  fill: currentColor;
+}
+
+body > main {
+  min-height: 60vh;
+}
+
+main .site-header,
+main .site-footer {
+  display: none;
+}
+
+@media (max-width: 860px) {
+  .social-icons a {
+    width: 44px;
+    height: 44px;
+  }
+
+  .social-follow strong {
+    max-width: none;
+  }
+}

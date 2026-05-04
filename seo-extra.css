@@ -1,0 +1,122 @@
+/* Agregar al final de app/globals.css */
+
+.service-hero {
+  background:
+    radial-gradient(circle at top right, rgba(217, 182, 107, 0.14), transparent 28%),
+    linear-gradient(135deg, #083d30 0%, #0b5d46 100%);
+  color: #ffffff;
+  padding: 88px 0;
+}
+
+.service-hero-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 44px;
+  align-items: center;
+}
+
+.service-hero h1 {
+  margin: 14px 0 0;
+  max-width: 840px;
+  color: #ffffff;
+  font-size: clamp(42px, 5vw, 64px);
+  font-weight: 900;
+  letter-spacing: -0.055em;
+  line-height: 1.02;
+}
+
+.service-hero p {
+  margin: 20px 0 0;
+  max-width: 720px;
+  color: rgba(255, 255, 255, 0.84);
+  font-size: 18px;
+  line-height: 1.75;
+}
+
+.service-hero-card {
+  padding: 30px;
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.98);
+  color: var(--text-main);
+  box-shadow: var(--shadow-md);
+}
+
+.service-hero-card strong {
+  display: block;
+  color: var(--green-dark);
+  font-size: 24px;
+  line-height: 1.18;
+  letter-spacing: -0.04em;
+}
+
+.service-hero-card p {
+  color: var(--text-soft);
+  font-size: 15px;
+}
+
+.seo-grid {
+  display: grid;
+  grid-template-columns: 1fr 0.78fr;
+  gap: 44px;
+  align-items: start;
+}
+
+.seo-content h2,
+.faq-list h2 {
+  margin: 14px 0 0;
+  color: var(--green-dark);
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 900;
+  letter-spacing: -0.05em;
+  line-height: 1.08;
+}
+
+.seo-content p {
+  color: var(--text-soft);
+  font-size: 17px;
+  line-height: 1.78;
+}
+
+.seo-list-card,
+.faq-item {
+  padding: 28px;
+  border-radius: 28px;
+  background: #ffffff;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+}
+
+.seo-list-card h3,
+.faq-item h3 {
+  margin: 0 0 14px;
+  color: var(--green-dark);
+  font-size: 22px;
+  letter-spacing: -0.035em;
+}
+
+.seo-list-card ul {
+  margin: 0;
+  padding-left: 18px;
+  color: var(--text-soft);
+  line-height: 1.85;
+}
+
+@media (max-width: 860px) {
+  .service-hero {
+    padding: 58px 0;
+  }
+
+  .service-hero-grid,
+  .seo-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .service-hero h1 {
+    font-size: clamp(34px, 10vw, 46px);
+  }
+
+  .service-hero p,
+  .seo-content p {
+    font-size: 16px;
+  }
+}

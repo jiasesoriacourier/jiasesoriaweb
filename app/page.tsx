@@ -107,27 +107,6 @@ function ServiceIcon({ type }: { type: ServiceIconType }) {
   return <div className="icon-box">{icons[type]}</div>;
 }
 
-function FloatingActions() {
-  return (
-    <div className="floating-actions" aria-label="Accesos rápidos flotantes">
-      <a href="#inicio" className="floating-button floating-home" aria-label="Ir al inicio" title="Ir al inicio">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-          <path d="M3 10.8 12 3l9 7.8" />
-          <path d="M5.5 10v10h13V10" />
-          <path d="M9.5 20v-6h5v6" />
-        </svg>
-      </a>
-
-      <a href="https://wa.me/50663939073" className="floating-button floating-whatsapp" aria-label="Escribir por WhatsApp" title="WhatsApp">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-          <path d="M4.2 19.8 5.4 16A8 8 0 1 1 8 18.5l-3.8 1.3Z" />
-          <path d="M9.3 8.8c.2-.5.4-.5.7-.5h.5c.2 0 .4.1.5.4l.7 1.6c.1.3.1.5-.1.7l-.4.5c.7 1.2 1.6 2.1 2.8 2.8l.5-.4c.2-.2.4-.2.7-.1l1.6.7c.3.1.4.3.4.5v.5c0 .3 0 .5-.5.7-.6.3-1.3.4-2 .2-3-.8-5.2-3-6-6-.2-.7-.1-1.4.2-2Z" />
-        </svg>
-      </a>
-    </div>
-  );
-}
-
 export default function Home() {
   const services: Array<{ title: string; text: string; link: string; icon: ServiceIconType }> = [
     {
@@ -221,52 +200,25 @@ export default function Home() {
     {
       title: "Transporte Internacional",
       text: "Coordinación de carga desde origen hasta destino con planificación y seguimiento.",
-      image: "/images/transporte.png",
+      image: "/images/transporte.webp",
       alt: "Transporte internacional de carga",
     },
     {
       title: "Transporte Local",
       text: "Distribución dentro del país con trazabilidad y cumplimiento operativo.",
-      image: "/images/transporte-local.png",
+      image: "/images/transporte-local.webp",
       alt: "Transporte local de mercancías",
     },
     {
       title: "Seguro de Carga",
       text: "Protección para mercancías durante el proceso logístico y reducción de riesgos.",
-      image: "/images/seguro-carga.png",
+      image: "/images/seguro-carga.webp",
       alt: "Seguro y control de carga",
     },
   ];
 
   return (
     <main>
-      <header className="site-header">
-        <div className="container header-inner">
-          <a href="#inicio" className="brand" aria-label="J.I Asesoría & Courier">
-            <img src="/images/logo-ji.png" alt="J.I Asesoría & Courier" className="brand-logo" />
-            <div>
-              <div className="brand-title">J.I Asesoría & Courier</div>
-              <div className="brand-subtitle">Compras seguras, entregas confiables.</div>
-            </div>
-          </a>
-
-          <nav className="main-nav" aria-label="Navegación principal">
-            <a href="#inicio">Inicio</a>
-            <a href="#servicios">Servicios</a>
-            <a href="#courier">Courier</a>
-            <a href="#aduanas">Aduanas</a>
-            <a href="#transporte">Transporte</a>
-            <a href="#empresas">Empresas</a>
-            <a href="#contacto">Contacto</a>
-          </nav>
-
-          <div className="header-actions">
-            <a href="#contacto" className="btn btn-outline">Asesoría</a>
-            <a href="https://wa.me/50663939073" className="btn btn-primary">WhatsApp</a>
-          </div>
-        </div>
-      </header>
-
       <section id="inicio" className="hero hero-minimal">
         <div className="container hero-grid">
           <div className="hero-copy fade-up">
@@ -280,8 +232,8 @@ export default function Home() {
             </p>
 
             <div className="hero-actions">
-              <a href="#contacto" className="btn btn-light">Solicitar asesoría</a>
-              <a href="#servicios" className="btn btn-ghost">Ver soluciones</a>
+              <a href="/contacto" className="btn btn-light">Solicitar asesoría</a>
+              <a href="/#servicios" className="btn btn-ghost">Ver soluciones</a>
             </div>
 
             <div className="hero-proof">
@@ -293,7 +245,7 @@ export default function Home() {
 
           <div className="hero-visual clean-visual fade-up delay-1">
             <img
-              src="/images/hero-corporativo.png"
+              src="/images/hero-corporativo.webp"
               alt="Equipo corporativo y operación logística"
               className="hero-main-image"
             />
@@ -303,15 +255,6 @@ export default function Home() {
               <h3>Agentes y aliados estratégicos para operaciones globales.</h3>
             </div>
           </div>
-        </div>
-      </section>
-
-      <section className="trust-strip">
-        <div className="container trust-strip-inner">
-          <span>Operación desde Miami</span>
-          <span>Cobertura internacional</span>
-          <span>Gestión aduanal completa</span>
-          <span>Atención empresarial directa</span>
         </div>
       </section>
 
@@ -394,7 +337,7 @@ export default function Home() {
       <section id="courier" className="section section-soft">
         <div className="container split-grid">
           <div className="visual-box clean-box">
-            <img src="/images/hero-courier.png" alt="Operación courier internacional" className="feature-image" />
+            <img src="/images/hero-courier.webp" alt="Operación courier internacional" className="feature-image" />
           </div>
 
           <div className="content-box">
@@ -448,12 +391,12 @@ export default function Home() {
             </div>
 
             <div className="content-actions">
-              <a href="#contacto" className="btn btn-primary">Consultar servicio aduanal</a>
+              <a href="/contacto" className="btn btn-primary">Consultar servicio aduanal</a>
             </div>
           </div>
 
           <div className="visual-box clean-box">
-            <img src="/images/aduanas.png" alt="Gestión documental y aduanal" className="feature-image" />
+            <img src="/images/aduanas.webp" alt="Gestión documental y aduanal" className="feature-image" />
           </div>
         </div>
       </section>
@@ -484,7 +427,7 @@ export default function Home() {
       <section id="rrhh" className="section">
         <div className="container split-grid">
           <div className="visual-box clean-box">
-            <img src="/images/rrhh.png" alt="Equipo profesional de recursos humanos" className="feature-image" />
+            <img src="/images/rrhh.webp" alt="Equipo profesional de recursos humanos" className="feature-image" />
           </div>
 
           <div className="content-box">
@@ -520,8 +463,7 @@ export default function Home() {
             </p>
 
             <div className="enterprise-badges">
-              <span>Tarifas por volumen</span>
-              <span>Courier por gramo desde Miami</span>
+              <span>Costos claros</span>
               <span>Operación constante</span>
               <span>Soporte empresarial</span>
             </div>
@@ -542,13 +484,13 @@ export default function Home() {
             </div>
 
             <div className="content-actions">
-              <a href="#contacto" className="btn btn-gold">Solicitar propuesta</a>
+              <a href="/contacto" className="btn btn-gold">Solicitar propuesta</a>
               <a href="mailto:info@couriercr.com" className="btn btn-ghost">info@couriercr.com</a>
             </div>
           </div>
 
           <div className="enterprise-visual-card">
-            <img src="/images/empresas.png" alt="Reunión empresarial enfocada en courier" className="feature-image" />
+            <img src="/images/empresas.webp" alt="Reunión empresarial enfocada en courier" className="feature-image" />
 
             <div className="enterprise-summary">
               <p className="panel-kicker">B2B</p>
@@ -618,53 +560,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      <FloatingActions />
-
-      <footer className="site-footer">
-        <div className="container footer-grid">
-          <div>
-            <h4>J.I Asesoría & Courier</h4>
-            <p>
-              Soluciones integrales en logística, aduanas, transporte, recursos humanos y courier
-              con enfoque en confianza, eficiencia y atención personalizada.
-            </p>
-          </div>
-
-          <div>
-            <h5>Servicios</h5>
-            <ul>
-              <li><a href="#courier">Courier Internacional</a></li>
-              <li><a href="#aduanas">Agencia Aduanal</a></li>
-              <li><a href="#transporte">Transporte y Seguro</a></li>
-              <li><a href="#rrhh">Recursos Humanos</a></li>
-              <li><a href="#empresas">Soluciones para Empresas</a></li>
-            </ul>
-          </div>
-
-          <div>
-            <h5>Accesos</h5>
-            <ul>
-              <li><a href="https://couriercr.com">Rastrear paquete</a></li>
-              <li><a href="https://couriercr.com">Prealertar compra</a></li>
-              <li><a href="#empresas">Empresas</a></li>
-              <li><a href="#contacto">Contacto</a></li>
-              <li><a href="#inicio">Regresar al inicio</a></li>
-            </ul>
-          </div>
-
-          <div>
-            <h5>Contacto</h5>
-            <ul>
-              <li><a href="https://wa.me/50663939073">WhatsApp: 6393-9073</a></li>
-              <li><a href="mailto:info@couriercr.com">Courier: info@couriercr.com</a></li>
-              <li><a href="mailto:info@jiasesoria.com">Servicios: info@jiasesoria.com</a></li>
-              <li>Horario: Lunes a Viernes</li>
-              <li>Atención nacional</li>
-            </ul>
-          </div>
-        </div>
-      </footer>
     </main>
   );
 }
