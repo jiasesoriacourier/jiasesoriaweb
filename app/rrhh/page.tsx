@@ -3,7 +3,7 @@ import RelatedLinks from "../components/RelatedLinks";
 
 export const metadata: Metadata = {
   title: "Servicios de Recursos Humanos para Empresas en Costa Rica",
-  description: "Apoyo en recursos humanos para empresas: reclutamiento, selección, administración de planilla, evaluaciones, capacitación y procesos internos.",
+  description: "Apoyo en Recursos Humanos para empresas: reclutamiento, selección, administración de planilla, evaluaciones, capacitación y procesos internos.",
   alternates: { canonical: "https://jiasesoria.com/rrhh" },
   openGraph: {
     title: "Servicios de Recursos Humanos para Empresas en Costa Rica",
@@ -20,6 +20,7 @@ const items = [
   'Evaluaciones de personal',
   'Capacitación',
   'Procesos internos'
+  'Asesoramiento para auditorías BASC'
 ];
 
 const relatedLinks = [
@@ -35,7 +36,7 @@ export default function Page() {
         <div className="container service-hero-grid">
           <div className="service-hero-copy">
             <span className="section-kicker section-kicker-gold">Recursos Humanos</span>
-            <h1>Servicios de recursos humanos para empresas que buscan orden y continuidad.</h1>
+            <h1>Servicios de Recursos Humanos para empresas que buscan orden y continuidad.</h1>
             <p>Brindamos apoyo en reclutamiento, administración de planilla, evaluaciones, capacitación y procesos internos para empresas que necesitan fortalecer su operación.</p>
             <div className="content-actions">
               <a href="/contacto" className="btn btn-light">Solicitar apoyo empresarial</a>
@@ -44,7 +45,7 @@ export default function Page() {
           </div>
 
           <div className="service-visual">
-            <img src="/images/rrhh.webp" alt="Servicios de recursos humanos para empresas que buscan orden y continuidad." className="service-hero-image" />
+            <img src="/images/rrhh.webp" alt="Servicios de Recursos Humanos para empresas que buscan orden y continuidad." className="service-hero-image" />
           </div>
         </div>
       </section>
@@ -53,7 +54,7 @@ export default function Page() {
         <div className="container seo-grid">
           <div className="seo-content">
             <span className="section-kicker">Información del servicio</span>
-            <h2>Recursos humanos con enfoque práctico y operativo.</h2>
+            <h2>Recursos Humanos con enfoque práctico y operativo.</h2>
             <p>
               Trabajamos con atención clara, procesos ordenados y acompañamiento profesional
               para que cada operación tenga mejor control, trazabilidad y respaldo.
