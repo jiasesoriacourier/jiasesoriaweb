@@ -19,7 +19,7 @@ const items = [
   'Administración de planilla',
   'Evaluaciones de personal',
   'Capacitación',
-  'Procesos internos'
+  'Procesos internos',
   'Asesoramiento para auditorías BASC'
 ];
 
