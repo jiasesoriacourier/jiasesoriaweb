@@ -97,7 +97,7 @@ export default function SiteFooter() {
             <li><a href="https://wa.me/50663939073">WhatsApp: 6393-9073</a></li>
             <li><a href="mailto:info@couriercr.com">Courier: info@couriercr.com</a></li>
             <li><a href="mailto:info@jiasesoria.com">Servicios: info@jiasesoria.com</a></li>
-            <li>Horario: Lunes a Viernes</li>
+            <li>Horario: Lunes a Viernes de 8:00am a 5:00pm</li>
             <li>Atención nacional</li>
           </ul>
         </div>
