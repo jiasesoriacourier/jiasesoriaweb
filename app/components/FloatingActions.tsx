@@ -1,13 +1,15 @@
+import Link from "next/link";
+
 export default function FloatingActions() {
   return (
     <div className="floating-actions" aria-label="Accesos rápidos flotantes">
-      <a href="/" className="floating-button floating-home" aria-label="Ir al inicio" title="Ir al inicio">
+      <Link href="/" className="floating-button floating-home" aria-label="Ir al inicio" title="Ir al inicio">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
           <path d="M3 10.8 12 3l9 7.8" />
           <path d="M5.5 10v10h13V10" />
           <path d="M9.5 20v-6h5v6" />
         </svg>
-      </a>
+      </Link>
 
       <a href="https://wa.me/50663939073" className="floating-button floating-whatsapp" aria-label="Escribir por WhatsApp" title="WhatsApp">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">

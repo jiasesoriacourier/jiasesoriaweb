@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 function FacebookIcon() {
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -72,11 +74,11 @@ export default function SiteFooter() {
         <div>
           <h5>Servicios</h5>
           <ul>
-            <li><a href="/courier">Courier Internacional</a></li>
-            <li><a href="/aduanas">Agencia Aduanal</a></li>
-            <li><a href="/transporte">Transporte y Seguro</a></li>
-            <li><a href="/rrhh">Recursos Humanos</a></li>
-            <li><a href="/empresas">Soluciones para Empresas</a></li>
+            <li><Link href="/courier">Courier Internacional</Link></li>
+            <li><Link href="/aduanas">Agencia Aduanal</Link></li>
+            <li><Link href="/transporte">Transporte y Seguro</Link></li>
+            <li><Link href="/rrhh">Recursos Humanos</Link></li>
+            <li><Link href="/empresas">Soluciones para Empresas</Link></li>
           </ul>
         </div>
 
@@ -85,9 +87,9 @@ export default function SiteFooter() {
           <ul>
             <li><a href="https://couriercr.com">Rastrear paquete</a></li>
             <li><a href="https://couriercr.com">Prealertar compra</a></li>
-            <li><a href="/empresas">Empresas</a></li>
-            <li><a href="/contacto">Contacto</a></li>
-            <li><a href="/">Regresar al inicio</a></li>
+            <li><Link href="/empresas">Empresas</Link></li>
+            <li><Link href="/contacto">Contacto</Link></li>
+            <li><Link href="/">Regresar al inicio</Link></li>
           </ul>
         </div>
 

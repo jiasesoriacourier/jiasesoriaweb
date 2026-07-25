@@ -44,7 +44,7 @@ export default function Page() {
           </div>
 
           <div className="service-visual">
-            <img src="/images/hero-courier.webp" alt="Courier en Costa Rica para compras internacionales con respaldo profesional." className="service-hero-image" />
+            <img src="/images/hero-courier.webp" alt="Courier en Costa Rica para compras internacionales con respaldo profesional." className="service-hero-image" fetchPriority="high" decoding="async" />
           </div>
         </div>
       </section>

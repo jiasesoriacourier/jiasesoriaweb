@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 type LinkItem = {
   href: string;
   title: string;
@@ -15,11 +17,11 @@ export default function RelatedLinks({ links }: { links: LinkItem[] }) {
 
         <div className="related-grid">
           {links.map((item) => (
-            <a href={item.href} className="related-card" key={item.href}>
+            <Link href={item.href} className="related-card" key={item.href}>
               <h3>{item.title}</h3>
               <p>{item.text}</p>
               <span>Ver servicio</span>
-            </a>
+            </Link>
           ))}
         </div>
       </div>

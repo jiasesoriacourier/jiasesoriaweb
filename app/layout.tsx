@@ -1,8 +1,18 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import SiteHeader from "./components/SiteHeader";
 import SiteFooter from "./components/SiteFooter";
 import FloatingActions from "./components/FloatingActions";
+import ScrollReveal from "./components/ScrollReveal";
+import { SITE } from "./config";
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800", "900"],
+  display: "swap",
+  variable: "--font-inter",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://jiasesoria.com"),
@@ -63,6 +73,7 @@ export const metadata: Metadata = {
     shortcut: "/favicon.ico",
     apple: "/apple-touch-icon.png",
   },
+  manifest: "/manifest.webmanifest",
   robots: {
     index: true,
     follow: true,
@@ -76,14 +87,50 @@ export const metadata: Metadata = {
   },
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  name: SITE.name,
+  url: SITE.url,
+  image: `${SITE.url}/images/hero-corporativo.webp`,
+  description:
+    "Courier internacional, agencia aduanal, importaciones, exportaciones, transporte y soluciones empresariales en Costa Rica.",
+  telephone: `+${SITE.whatsapp}`,
+  email: SITE.emailEmpresas,
+  areaServed: "CR",
+  address: {
+    "@type": "PostalAddress",
+    addressCountry: "CR",
+  },
+  sameAs: [
+    "https://www.facebook.com/jiasesoria",
+    "https://www.instagram.com/jiasesoria",
+    "https://www.linkedin.com/in/j-i-asesor%C3%ADa-courier-948845381/",
+  ],
+};
+
+export const viewport: Viewport = {
+  themeColor: "#0b5d46",
+  width: "device-width",
+  initialScale: 1,
+};
+
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="es-CR">
+    <html lang="es-CR" className={inter.variable}>
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        <a href="#contenido" className="skip-link">Saltar al contenido</a>
         <SiteHeader />
-        {children}
+        <div id="contenido" tabIndex={-1}>
+          {children}
+        </div>
         <FloatingActions />
         <SiteFooter />
+        <ScrollReveal />
       </body>
     </html>
   );
