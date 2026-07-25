@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import RelatedLinks from "../components/RelatedLinks";
+import ContactForm from "../components/ContactForm";
 
 export const metadata: Metadata = {
   title: "Contacto | J.I Asesoría & Courier",
@@ -28,15 +29,7 @@ export default function ContactoPage() {
             </p>
 
             <div className="contact-grid">
-              <form action="https://formspree.io/f/TU_ID_AQUI" method="POST" className="contact-form">
-                <h3>Envíanos tu consulta</h3>
-                <input type="text" name="nombre" placeholder="Nombre completo" required />
-                <input type="text" name="contacto" placeholder="Teléfono o WhatsApp" required />
-                <input type="email" name="email" placeholder="Correo electrónico" required />
-                <textarea name="mensaje" placeholder="Cuéntanos qué necesitas..." required />
-                <button type="submit" className="btn btn-primary">Enviar consulta</button>
-                <p className="form-note">Te respondemos en menos de 24 horas hábiles.</p>
-              </form>
+              <ContactForm />
 
               <div className="contact-info">
                 <h3>Contacto directo</h3>

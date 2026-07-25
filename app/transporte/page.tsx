@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import RelatedLinks from "../components/RelatedLinks";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Transporte Internacional y Local en Costa Rica | Seguro de Carga",
@@ -38,13 +39,13 @@ export default function Page() {
             <h1>Transporte internacional y local para mover tu carga con respaldo.</h1>
             <p>Coordinamos soluciones de transporte para importadores, empresas y negocios que necesitan continuidad logística, trazabilidad y protección de mercancías.</p>
             <div className="content-actions">
-              <a href="/contacto" className="btn btn-light">Cotizar transporte</a>
+              <Link href="/contacto" className="btn btn-light">Cotizar transporte</Link>
               <a href="mailto:info@jiasesoria.com" className="btn btn-ghost">info@jiasesoria.com</a>
             </div>
           </div>
 
           <div className="service-visual">
-            <img src="/images/transporte.webp" alt="Transporte internacional y local para mover tu carga con respaldo." className="service-hero-image" />
+            <img src="/images/transporte.webp" alt="Transporte internacional y local para mover tu carga con respaldo." className="service-hero-image" fetchPriority="high" decoding="async" />
           </div>
         </div>
       </section>

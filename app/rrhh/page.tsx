@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import RelatedLinks from "../components/RelatedLinks";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Servicios de Recursos Humanos para Empresas en Costa Rica",
@@ -39,13 +40,13 @@ export default function Page() {
             <h1>Servicios de Recursos Humanos para empresas que buscan orden y continuidad.</h1>
             <p>Brindamos apoyo en reclutamiento, administración de planilla, evaluaciones, capacitación y procesos internos para empresas que necesitan fortalecer su operación.</p>
             <div className="content-actions">
-              <a href="/contacto" className="btn btn-light">Solicitar apoyo empresarial</a>
+              <Link href="/contacto" className="btn btn-light">Solicitar apoyo empresarial</Link>
               <a href="mailto:info@jiasesoria.com" className="btn btn-ghost">info@jiasesoria.com</a>
             </div>
           </div>
 
           <div className="service-visual">
-            <img src="/images/rrhh.webp" alt="Servicios de Recursos Humanos para empresas que buscan orden y continuidad." className="service-hero-image" />
+            <img src="/images/rrhh.webp" alt="Servicios de Recursos Humanos para empresas que buscan orden y continuidad." className="service-hero-image" fetchPriority="high" decoding="async" />
           </div>
         </div>
       </section>

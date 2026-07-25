@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import RelatedLinks from "../components/RelatedLinks";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Agencia Aduanal en Costa Rica | Importaciones y Exportaciones",
@@ -39,13 +40,13 @@ export default function Page() {
             <h1>Agencia aduanal en Costa Rica con control documental y cumplimiento.</h1>
             <p>Más de 20 años de experiencia apoyando operaciones de importación y exportación con revisión documental, clasificación arancelaria y trámites aduaneros.</p>
             <div className="content-actions">
-              <a href="/contacto" className="btn btn-light">Consultar trámite aduanero</a>
+              <Link href="/contacto" className="btn btn-light">Consultar trámite aduanero</Link>
               <a href="mailto:info@jiasesoria.com" className="btn btn-ghost">info@jiasesoria.com</a>
             </div>
           </div>
 
           <div className="service-visual">
-            <img src="/images/aduanas.webp" alt="Agencia aduanal en Costa Rica con control documental y cumplimiento." className="service-hero-image" />
+            <img src="/images/aduanas.webp" alt="Agencia aduanal en Costa Rica con control documental y cumplimiento." className="service-hero-image" fetchPriority="high" decoding="async" />
           </div>
         </div>
       </section>

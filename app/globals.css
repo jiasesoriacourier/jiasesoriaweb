@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap");
-
 :root {
   --green-dark: #083d30;
   --green-main: #0b5d46;
@@ -26,7 +24,7 @@ html {
 
 body {
   margin: 0;
-  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), "Inter", Arial, Helvetica, sans-serif;
   color: var(--text-main);
   background: #ffffff;
   font-size: 16px;
@@ -2098,4 +2096,231 @@ main .site-footer {
 
 .blog-content ul {
   margin-left: 20px;
+}
+
+/* =====================================================
+   MEJORAS: accesibilidad, menú móvil, revelado y formulario
+   ===================================================== */
+
+/* --- Saltar al contenido (accesibilidad) --- */
+.skip-link {
+  position: absolute;
+  left: 16px;
+  top: -60px;
+  z-index: 200;
+  background: var(--green-main);
+  color: #fff;
+  padding: 10px 18px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 14px;
+  box-shadow: var(--shadow-md);
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 14px;
+  outline: none;
+}
+
+#contenido:focus {
+  outline: none;
+}
+
+/* --- Foco visible para teclado (premium + accesible) --- */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+.btn:focus-visible {
+  outline: 3px solid rgba(11, 93, 70, 0.55);
+  outline-offset: 3px;
+  border-radius: 8px;
+}
+
+/* --- Botón hamburguesa --- */
+.nav-toggle {
+  display: none;
+  width: 46px;
+  height: 46px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #fff;
+  cursor: pointer;
+  padding: 0;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.nav-toggle:hover {
+  box-shadow: var(--shadow-sm);
+}
+
+.nav-toggle span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  border-radius: 999px;
+  background: var(--green-dark);
+  transition: transform 0.25s ease, opacity 0.2s ease;
+}
+
+.nav-toggle.is-open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.nav-toggle.is-open span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle.is-open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* --- Panel de navegación móvil --- */
+.mobile-nav-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 95;
+  background: rgba(9, 30, 20, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.28s ease, visibility 0.28s ease;
+}
+
+.mobile-nav-overlay.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.mobile-nav {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 96;
+  height: 100dvh;
+  width: min(320px, 84vw);
+  background: #fff;
+  box-shadow: -20px 0 60px rgba(9, 30, 20, 0.18);
+  padding: 92px 26px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  transform: translateX(100%);
+  visibility: hidden;
+  transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1), visibility 0.32s ease;
+  overflow-y: auto;
+}
+
+.mobile-nav.is-open {
+  transform: translateX(0);
+  visibility: visible;
+}
+
+.mobile-nav a {
+  font-size: 17px;
+  font-weight: 650;
+  color: #24333d;
+  padding: 13px 6px;
+  border-bottom: 1px solid rgba(221, 230, 226, 0.7);
+  transition: color 0.2s ease, padding-left 0.2s ease;
+}
+
+.mobile-nav a:hover {
+  color: var(--green-main);
+  padding-left: 12px;
+}
+
+.mobile-nav-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.mobile-nav-actions .btn {
+  width: 100%;
+  text-align: center;
+}
+
+/* El botón hamburguesa solo aparece cuando se oculta el menú de escritorio */
+@media (max-width: 860px) {
+  .nav-toggle {
+    display: inline-flex;
+  }
+}
+
+/* --- Revelado suave al hacer scroll --- */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+.reveal-in {
+  opacity: 1;
+  transform: none;
+}
+
+/* --- Formulario: etiquetas y estados --- */
+.contact-form label {
+  display: block;
+  font-size: 13px;
+  font-weight: 650;
+  color: var(--text-soft);
+  margin-bottom: 6px;
+  margin-top: 4px;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: var(--green-main);
+  box-shadow: 0 0 0 3px rgba(11, 93, 70, 0.12);
+}
+
+.contact-form button[disabled] {
+  opacity: 0.7;
+  cursor: progress;
+}
+
+.form-success {
+  border: 1px solid rgba(11, 93, 70, 0.25);
+  background: var(--green-soft);
+}
+
+.form-success h3 {
+  color: var(--green-dark);
+}
+
+.form-error {
+  margin-top: 10px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: #fdecec;
+  color: #a12626;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.form-error a {
+  color: #a12626;
+  text-decoration: underline;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .mobile-nav {
+    transition: none;
+  }
 }

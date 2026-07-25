@@ -1,3 +1,6 @@
+import Link from "next/link";
+import ContactForm from "./components/ContactForm";
+
 type ServiceIconType =
   | "courier"
   | "aduanas"
@@ -232,8 +235,8 @@ export default function Home() {
             </p>
 
             <div className="hero-actions">
-              <a href="/contacto" className="btn btn-light">Solicitar asesoría</a>
-              <a href="/#servicios" className="btn btn-ghost">Ver soluciones</a>
+              <Link href="/contacto" className="btn btn-light">Solicitar asesoría</Link>
+              <Link href="/#servicios" className="btn btn-ghost">Ver soluciones</Link>
             </div>
 
             <div className="hero-proof">
@@ -248,6 +251,8 @@ export default function Home() {
               src="/images/hero-corporativo.webp"
               alt="Equipo corporativo y operación logística"
               className="hero-main-image"
+              fetchPriority="high"
+              decoding="async"
             />
 
             <div className="hero-floating-card card-shadow">
@@ -337,7 +342,7 @@ export default function Home() {
       <section id="courier" className="section section-soft">
         <div className="container split-grid">
           <div className="visual-box clean-box">
-            <img src="/images/hero-courier.webp" alt="Operación courier internacional" className="feature-image" />
+            <img src="/images/hero-courier.webp" alt="Operación courier internacional" className="feature-image" loading="lazy" decoding="async" />
           </div>
 
           <div className="content-box">
@@ -391,12 +396,12 @@ export default function Home() {
             </div>
 
             <div className="content-actions">
-              <a href="/contacto" className="btn btn-primary">Consultar servicio aduanal</a>
+              <Link href="/contacto" className="btn btn-primary">Consultar servicio aduanal</Link>
             </div>
           </div>
 
           <div className="visual-box clean-box">
-            <img src="/images/aduanas.webp" alt="Gestión documental y aduanal" className="feature-image" />
+            <img src="/images/aduanas.webp" alt="Gestión documental y aduanal" className="feature-image" loading="lazy" decoding="async" />
           </div>
         </div>
       </section>
@@ -415,7 +420,7 @@ export default function Home() {
           <div className="cards-grid cards-grid-3">
             {transportItems.map((item) => (
               <article className="service-card rich-card" key={item.title}>
-                <img src={item.image} alt={item.alt} className="section-image" />
+                <img src={item.image} alt={item.alt} className="section-image" loading="lazy" decoding="async" />
                 <h3>{item.title}</h3>
                 <p>{item.text}</p>
               </article>
@@ -427,7 +432,7 @@ export default function Home() {
       <section id="rrhh" className="section">
         <div className="container split-grid">
           <div className="visual-box clean-box">
-            <img src="/images/rrhh.webp" alt="Equipo profesional de recursos humanos" className="feature-image" />
+            <img src="/images/rrhh.webp" alt="Equipo profesional de recursos humanos" className="feature-image" loading="lazy" decoding="async" />
           </div>
 
           <div className="content-box">
@@ -484,13 +489,13 @@ export default function Home() {
             </div>
 
             <div className="content-actions">
-              <a href="/contacto" className="btn btn-gold">Solicitar propuesta</a>
+              <Link href="/contacto" className="btn btn-gold">Solicitar propuesta</Link>
               <a href="mailto:info@couriercr.com" className="btn btn-ghost">info@couriercr.com</a>
             </div>
           </div>
 
           <div className="enterprise-visual-card">
-            <img src="/images/empresas.webp" alt="Reunión empresarial enfocada en courier" className="feature-image" />
+            <img src="/images/empresas.webp" alt="Reunión empresarial enfocada en courier" className="feature-image" loading="lazy" decoding="async" />
 
             <div className="enterprise-summary">
               <p className="panel-kicker">B2B</p>
@@ -517,24 +522,7 @@ export default function Home() {
             </p>
 
             <div className="contact-grid">
-              <form
-                action="https://formspree.io/f/TU_ID_AQUI"
-                method="POST"
-                className="contact-form"
-              >
-                <h3>Envíanos tu consulta</h3>
-
-                <input type="text" name="nombre" placeholder="Nombre completo" required />
-                <input type="text" name="contacto" placeholder="Teléfono o WhatsApp" required />
-                <input type="email" name="email" placeholder="Correo electrónico" required />
-                <textarea name="mensaje" placeholder="Cuéntanos qué necesitas..." required />
-
-                <button type="submit" className="btn btn-primary">
-                  Enviar consulta
-                </button>
-
-                <p className="form-note">Te respondemos en menos de 24 horas hábiles.</p>
-              </form>
+              <ContactForm />
 
               <div className="contact-info">
                 <h3>Contacto directo</h3>

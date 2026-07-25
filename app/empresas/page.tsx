@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import RelatedLinks from "../components/RelatedLinks";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Soluciones Courier para Empresas | Tarifas por Volumen Costa Rica",
@@ -38,13 +39,13 @@ export default function Page() {
             <h1>Estructura courier y logística para empresas que operan con volumen.</h1>
             <p>Ayudamos a importadores, empresas courier y negocios con compras constantes a trabajar con costos claros, trazabilidad y continuidad operativa.</p>
             <div className="content-actions">
-              <a href="/contacto" className="btn btn-light">Solicitar propuesta</a>
+              <Link href="/contacto" className="btn btn-light">Solicitar propuesta</Link>
               <a href="mailto:info@couriercr.com" className="btn btn-ghost">info@couriercr.com</a>
             </div>
           </div>
 
           <div className="service-visual">
-            <img src="/images/empresas.webp" alt="Estructura courier y logística para empresas que operan con volumen." className="service-hero-image" />
+            <img src="/images/empresas.webp" alt="Estructura courier y logística para empresas que operan con volumen." className="service-hero-image" fetchPriority="high" decoding="async" />
           </div>
         </div>
       </section>
