@@ -20,6 +20,7 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 78px;
+  overflow-x: hidden;
 }
 
 body {
@@ -31,6 +32,7 @@ body {
   line-height: 1.6;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
 a {
@@ -2323,4 +2325,25 @@ textarea:focus-visible,
   .mobile-nav {
     transition: none;
   }
+}
+
+/* --- Elevación del header al hacer scroll (profundidad premium) --- */
+.site-header {
+  transition: box-shadow 0.28s ease, background 0.28s ease, border-color 0.28s ease;
+}
+
+.site-header.scrolled {
+  background: rgba(255, 255, 255, 0.98);
+  box-shadow: 0 10px 30px rgba(9, 30, 20, 0.09);
+  border-bottom-color: rgba(221, 230, 226, 0.55);
+}
+
+/* --- Feedback táctil en botones al pulsar --- */
+.btn {
+  transition: transform 0.16s ease, box-shadow 0.22s ease,
+    background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.btn:active {
+  transform: translateY(1px) scale(0.985);
 }

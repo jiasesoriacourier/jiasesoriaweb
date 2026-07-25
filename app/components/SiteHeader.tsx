@@ -16,6 +16,15 @@ const NAV_LINKS = [
 
 export default function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  // Sombra sutil en el header al hacer scroll (sensación de profundidad).
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   // Bloquea el scroll del fondo cuando el menú móvil está abierto.
   useEffect(() => {
@@ -36,7 +45,7 @@ export default function SiteHeader() {
   }, [open]);
 
   return (
-    <header className="site-header">
+    <header className={`site-header${scrolled ? " scrolled" : ""}`}>
       <div className="container header-inner">
         <Link href="/" className="brand" aria-label="J.I Asesoría & Courier">
           <img
