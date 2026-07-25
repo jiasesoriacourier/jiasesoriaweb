@@ -2347,3 +2347,66 @@ textarea:focus-visible,
 .btn:active {
   transform: translateY(1px) scale(0.985);
 }
+
+/* --- Halo suave detrás de la imagen del hero (profundidad) --- */
+.clean-visual::before {
+  content: "";
+  position: absolute;
+  inset: -10% -8% -14% -8%;
+  background: radial-gradient(
+    58% 58% at 50% 42%,
+    rgba(217, 182, 107, 0.28),
+    rgba(217, 182, 107, 0) 70%
+  );
+  filter: blur(34px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.clean-visual .hero-main-image {
+  position: relative;
+  z-index: 1;
+}
+
+.clean-visual .hero-floating-card {
+  z-index: 2;
+}
+
+/* --- Sección activa en la navegación --- */
+.main-nav a.active {
+  color: var(--green-main);
+}
+
+.main-nav a.active::after {
+  width: 100%;
+}
+
+.mobile-nav a.active {
+  color: var(--green-main);
+  padding-left: 12px;
+  border-left: 3px solid var(--green-main);
+}
+
+/* --- Pulso sutil en el botón flotante de WhatsApp --- */
+.floating-whatsapp {
+  animation: waPulse 2.6s ease-out infinite;
+}
+
+.floating-whatsapp:hover {
+  animation: none;
+}
+
+@keyframes waPulse {
+  0% {
+    box-shadow: 0 16px 36px rgba(9, 30, 20, 0.22),
+      0 0 0 0 rgba(18, 140, 80, 0.5);
+  }
+  70% {
+    box-shadow: 0 16px 36px rgba(9, 30, 20, 0.22),
+      0 0 0 15px rgba(18, 140, 80, 0);
+  }
+  100% {
+    box-shadow: 0 16px 36px rgba(9, 30, 20, 0.22),
+      0 0 0 0 rgba(18, 140, 80, 0);
+  }
+}

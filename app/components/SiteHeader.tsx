@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const NAV_LINKS = [
   { href: "/", label: "Inicio" },
@@ -17,6 +18,10 @@ const NAV_LINKS = [
 export default function SiteHeader() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
+
+  const isActive = (href: string) =>
+    href === "/" ? pathname === "/" : pathname.startsWith(href);
 
   // Sombra sutil en el header al hacer scroll (sensación de profundidad).
   useEffect(() => {
@@ -63,7 +68,12 @@ export default function SiteHeader() {
 
         <nav className="main-nav" aria-label="Navegación principal">
           {NAV_LINKS.map((link) => (
-            <Link key={link.href} href={link.href}>
+            <Link
+              key={link.href}
+              href={link.href}
+              className={isActive(link.href) ? "active" : undefined}
+              aria-current={isActive(link.href) ? "page" : undefined}
+            >
               {link.label}
             </Link>
           ))}
@@ -101,7 +111,13 @@ export default function SiteHeader() {
         aria-hidden={!open}
       >
         {NAV_LINKS.map((link) => (
-          <Link key={link.href} href={link.href} onClick={() => setOpen(false)}>
+          <Link
+            key={link.href}
+            href={link.href}
+            className={isActive(link.href) ? "active" : undefined}
+            aria-current={isActive(link.href) ? "page" : undefined}
+            onClick={() => setOpen(false)}
+          >
             {link.label}
           </Link>
         ))}

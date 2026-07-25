@@ -1,5 +1,6 @@
 import Link from "next/link";
 import ContactForm from "./components/ContactForm";
+import AnimatedNumber from "./components/AnimatedNumber";
 
 type ServiceIconType =
   | "courier"
@@ -306,7 +307,7 @@ export default function Home() {
             {stats.map((item) => (
               <article className="stat-card" key={item.label}>
                 <ServiceIcon type={item.icon} />
-                <strong>{item.number}</strong>
+                <strong><AnimatedNumber value={item.number} /></strong>
                 <h3>{item.label}</h3>
                 <p>{item.text}</p>
               </article>
