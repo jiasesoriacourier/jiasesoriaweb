@@ -13,21 +13,24 @@ export default function ContactForm() {
 
     const form = e.currentTarget;
 
-    // Honeypot: si un bot rellena este campo oculto, descartamos el envío.
-    const trap = (form.elements.namedItem("_gotcha") as HTMLInputElement)?.value;
-    if (trap) return;
-
     if (!FORMSPREE_READY) {
       setStatus("error");
       return;
     }
 
     setStatus("sending");
+
+    // Timeout de seguridad: si la red se queda colgada (típico en móvil),
+    // no dejamos el botón bloqueado en "Enviando..." para siempre.
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 15000);
+
     try {
       const res = await fetch(FORMSPREE_ENDPOINT, {
         method: "POST",
         body: new FormData(form),
         headers: { Accept: "application/json" },
+        signal: controller.signal,
       });
       if (res.ok) {
         setStatus("ok");
@@ -37,6 +40,8 @@ export default function ContactForm() {
       }
     } catch {
       setStatus("error");
+    } finally {
+      clearTimeout(timeout);
     }
   }
 
@@ -58,7 +63,7 @@ export default function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="contact-form" noValidate>
+    <form onSubmit={handleSubmit} className="contact-form">
       <h3>Envíanos tu consulta</h3>
 
       <label htmlFor="cf-nombre">Nombre completo</label>
@@ -72,16 +77,6 @@ export default function ContactForm() {
 
       <label htmlFor="cf-mensaje">Tu mensaje</label>
       <textarea id="cf-mensaje" name="mensaje" placeholder="Cuéntanos qué necesitas..." required />
-
-      {/* Campo trampa anti-spam: invisible para humanos */}
-      <input
-        type="text"
-        name="_gotcha"
-        tabIndex={-1}
-        autoComplete="off"
-        aria-hidden="true"
-        style={{ position: "absolute", left: "-9999px", width: 1, height: 1, opacity: 0 }}
-      />
 
       <button type="submit" className="btn btn-primary" disabled={status === "sending"}>
         {status === "sending" ? "Enviando..." : "Enviar consulta"}

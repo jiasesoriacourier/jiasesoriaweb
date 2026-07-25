@@ -20,6 +20,7 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 78px;
+  overflow-x: hidden;
 }
 
 body {
@@ -31,6 +32,7 @@ body {
   line-height: 1.6;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
 a {
@@ -60,7 +62,7 @@ section[id] {
 .site-header {
   position: sticky;
   top: 0;
-  z-index: 90;
+  z-index: 100;
   background: rgba(255, 255, 255, 0.94);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(221, 230, 226, 0.88);
@@ -2141,6 +2143,8 @@ textarea:focus-visible,
 /* --- Botón hamburguesa --- */
 .nav-toggle {
   display: none;
+  position: relative;
+  z-index: 130;
   width: 46px;
   height: 46px;
   border: 1px solid var(--border);
@@ -2180,28 +2184,41 @@ textarea:focus-visible,
   transform: translateY(-7px) rotate(-45deg);
 }
 
-/* --- Panel de navegación móvil --- */
-.mobile-nav-overlay {
+/* --- Panel de navegación móvil ---
+   El portal es un contenedor fijo con overflow:hidden que RECORTA el panel
+   cuando está fuera de pantalla, evitando el desbordamiento horizontal
+   (franja blanca). El panel va posicionado en absoluto DENTRO del portal. */
+.mobile-nav-portal {
   position: fixed;
   inset: 0;
   z-index: 95;
-  background: rgba(9, 30, 20, 0.5);
-  opacity: 0;
+  overflow: hidden;
   visibility: hidden;
-  transition: opacity 0.28s ease, visibility 0.28s ease;
+  pointer-events: none;
 }
 
-.mobile-nav-overlay.is-open {
-  opacity: 1;
+.mobile-nav-portal.is-open {
   visibility: visible;
+  pointer-events: auto;
+}
+
+.mobile-nav-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(9, 30, 20, 0.5);
+  opacity: 0;
+  transition: opacity 0.28s ease;
+}
+
+.mobile-nav-portal.is-open .mobile-nav-overlay {
+  opacity: 1;
 }
 
 .mobile-nav {
-  position: fixed;
+  position: absolute;
   top: 0;
   right: 0;
-  z-index: 96;
-  height: 100dvh;
+  height: 100%;
   width: min(320px, 84vw);
   background: #fff;
   box-shadow: -20px 0 60px rgba(9, 30, 20, 0.18);
@@ -2210,14 +2227,12 @@ textarea:focus-visible,
   flex-direction: column;
   gap: 4px;
   transform: translateX(100%);
-  visibility: hidden;
-  transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1), visibility 0.32s ease;
+  transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
   overflow-y: auto;
 }
 
-.mobile-nav.is-open {
+.mobile-nav-portal.is-open .mobile-nav {
   transform: translateX(0);
-  visibility: visible;
 }
 
 .mobile-nav a {
@@ -2322,5 +2337,89 @@ textarea:focus-visible,
 
   .mobile-nav {
     transition: none;
+  }
+}
+
+/* --- Elevación del header al hacer scroll (profundidad premium) --- */
+.site-header {
+  transition: box-shadow 0.28s ease, background 0.28s ease, border-color 0.28s ease;
+}
+
+.site-header.scrolled {
+  background: rgba(255, 255, 255, 0.98);
+  box-shadow: 0 10px 30px rgba(9, 30, 20, 0.09);
+  border-bottom-color: rgba(221, 230, 226, 0.55);
+}
+
+/* --- Feedback táctil en botones al pulsar --- */
+.btn {
+  transition: transform 0.16s ease, box-shadow 0.22s ease,
+    background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.btn:active {
+  transform: translateY(1px) scale(0.985);
+}
+
+/* --- Halo suave detrás de la imagen del hero (profundidad) --- */
+.clean-visual::before {
+  content: "";
+  position: absolute;
+  inset: -10% -8% -14% -8%;
+  background: radial-gradient(
+    58% 58% at 50% 42%,
+    rgba(217, 182, 107, 0.28),
+    rgba(217, 182, 107, 0) 70%
+  );
+  filter: blur(34px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.clean-visual .hero-main-image {
+  position: relative;
+  z-index: 1;
+}
+
+.clean-visual .hero-floating-card {
+  z-index: 2;
+}
+
+/* --- Sección activa en la navegación --- */
+.main-nav a.active {
+  color: var(--green-main);
+}
+
+.main-nav a.active::after {
+  width: 100%;
+}
+
+.mobile-nav a.active {
+  color: var(--green-main);
+  padding-left: 12px;
+  border-left: 3px solid var(--green-main);
+}
+
+/* --- Pulso sutil en el botón flotante de WhatsApp --- */
+.floating-whatsapp {
+  animation: waPulse 2.6s ease-out infinite;
+}
+
+.floating-whatsapp:hover {
+  animation: none;
+}
+
+@keyframes waPulse {
+  0% {
+    box-shadow: 0 16px 36px rgba(9, 30, 20, 0.22),
+      0 0 0 0 rgba(18, 140, 80, 0.5);
+  }
+  70% {
+    box-shadow: 0 16px 36px rgba(9, 30, 20, 0.22),
+      0 0 0 15px rgba(18, 140, 80, 0);
+  }
+  100% {
+    box-shadow: 0 16px 36px rgba(9, 30, 20, 0.22),
+      0 0 0 0 rgba(18, 140, 80, 0);
   }
 }
