@@ -62,7 +62,7 @@ section[id] {
 .site-header {
   position: sticky;
   top: 0;
-  z-index: 90;
+  z-index: 100;
   background: rgba(255, 255, 255, 0.94);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(221, 230, 226, 0.88);
@@ -2143,6 +2143,8 @@ textarea:focus-visible,
 /* --- Botón hamburguesa --- */
 .nav-toggle {
   display: none;
+  position: relative;
+  z-index: 130;
   width: 46px;
   height: 46px;
   border: 1px solid var(--border);
@@ -2182,28 +2184,41 @@ textarea:focus-visible,
   transform: translateY(-7px) rotate(-45deg);
 }
 
-/* --- Panel de navegación móvil --- */
-.mobile-nav-overlay {
+/* --- Panel de navegación móvil ---
+   El portal es un contenedor fijo con overflow:hidden que RECORTA el panel
+   cuando está fuera de pantalla, evitando el desbordamiento horizontal
+   (franja blanca). El panel va posicionado en absoluto DENTRO del portal. */
+.mobile-nav-portal {
   position: fixed;
   inset: 0;
   z-index: 95;
-  background: rgba(9, 30, 20, 0.5);
-  opacity: 0;
+  overflow: hidden;
   visibility: hidden;
-  transition: opacity 0.28s ease, visibility 0.28s ease;
+  pointer-events: none;
 }
 
-.mobile-nav-overlay.is-open {
-  opacity: 1;
+.mobile-nav-portal.is-open {
   visibility: visible;
+  pointer-events: auto;
+}
+
+.mobile-nav-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(9, 30, 20, 0.5);
+  opacity: 0;
+  transition: opacity 0.28s ease;
+}
+
+.mobile-nav-portal.is-open .mobile-nav-overlay {
+  opacity: 1;
 }
 
 .mobile-nav {
-  position: fixed;
+  position: absolute;
   top: 0;
   right: 0;
-  z-index: 96;
-  height: 100dvh;
+  height: 100%;
   width: min(320px, 84vw);
   background: #fff;
   box-shadow: -20px 0 60px rgba(9, 30, 20, 0.18);
@@ -2212,14 +2227,12 @@ textarea:focus-visible,
   flex-direction: column;
   gap: 4px;
   transform: translateX(100%);
-  visibility: hidden;
-  transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1), visibility 0.32s ease;
+  transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
   overflow-y: auto;
 }
 
-.mobile-nav.is-open {
+.mobile-nav-portal.is-open .mobile-nav {
   transform: translateX(0);
-  visibility: visible;
 }
 
 .mobile-nav a {

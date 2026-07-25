@@ -50,8 +50,9 @@ export default function SiteHeader() {
   }, [open]);
 
   return (
-    <header className={`site-header${scrolled ? " scrolled" : ""}`}>
-      <div className="container header-inner">
+    <>
+      <header className={`site-header${scrolled ? " scrolled" : ""}`}>
+        <div className="container header-inner">
         <Link href="/" className="brand" aria-label="J.I Asesoría & Courier">
           <img
             src="/images/logo-ji.webp"
@@ -96,40 +97,43 @@ export default function SiteHeader() {
           <span />
           <span />
         </button>
-      </div>
-
-      <div
-        className={`mobile-nav-overlay${open ? " is-open" : ""}`}
-        onClick={() => setOpen(false)}
-        aria-hidden="true"
-      />
-
-      <nav
-        id="mobile-nav"
-        className={`mobile-nav${open ? " is-open" : ""}`}
-        aria-label="Navegación móvil"
-        aria-hidden={!open}
-      >
-        {NAV_LINKS.map((link) => (
-          <Link
-            key={link.href}
-            href={link.href}
-            className={isActive(link.href) ? "active" : undefined}
-            aria-current={isActive(link.href) ? "page" : undefined}
-            onClick={() => setOpen(false)}
-          >
-            {link.label}
-          </Link>
-        ))}
-        <div className="mobile-nav-actions">
-          <Link href="/contacto" className="btn btn-outline" onClick={() => setOpen(false)}>
-            Asesoría
-          </Link>
-          <a href="https://wa.me/50663939073" className="btn btn-primary">
-            WhatsApp
-          </a>
         </div>
-      </nav>
-    </header>
+      </header>
+
+      <div className={`mobile-nav-portal${open ? " is-open" : ""}`}>
+        <div
+          className="mobile-nav-overlay"
+          onClick={() => setOpen(false)}
+          aria-hidden="true"
+        />
+
+        <nav
+          id="mobile-nav"
+          className="mobile-nav"
+          aria-label="Navegación móvil"
+          aria-hidden={!open}
+        >
+          {NAV_LINKS.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className={isActive(link.href) ? "active" : undefined}
+              aria-current={isActive(link.href) ? "page" : undefined}
+              onClick={() => setOpen(false)}
+            >
+              {link.label}
+            </Link>
+          ))}
+          <div className="mobile-nav-actions">
+            <Link href="/contacto" className="btn btn-outline" onClick={() => setOpen(false)}>
+              Asesoría
+            </Link>
+            <a href="https://wa.me/50663939073" className="btn btn-primary" onClick={() => setOpen(false)}>
+              WhatsApp
+            </a>
+          </div>
+        </nav>
+      </div>
+    </>
   );
 }
