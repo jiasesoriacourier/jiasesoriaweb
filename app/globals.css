@@ -20,7 +20,7 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 78px;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 body {
@@ -32,7 +32,7 @@ body {
   line-height: 1.6;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 a {
@@ -41,7 +41,7 @@ a {
 }
 
 main {
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 section[id] {
