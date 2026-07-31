@@ -2424,73 +2424,18 @@ textarea:focus-visible,
   }
 }
 
-/* =====================================================
-   Revelado + parallax suave de imágenes de sección
-   Técnica: animaciones ligadas al scroll (animation-timeline).
-   - Degrada a imagen estática si el navegador no lo soporta.
-   - Se desactiva con prefers-reduced-motion.
-   - El parallax (deriva vertical) solo en escritorio y sobre
-     imágenes grandes recortadas por su marco (sin huecos).
-   ===================================================== */
-@supports (animation-timeline: view()) {
-  @media (prefers-reduced-motion: no-preference) {
-    /* Revelado: aparecen con fade + escala 0.94 -> 1 al entrar */
-    .feature-image,
-    .section-image {
-      animation-name: imgReveal;
-      animation-timing-function: ease-out;
-      animation-fill-mode: both;
-      animation-timeline: view();
-      animation-range: entry 0% entry 88%;
-      will-change: transform, opacity;
-    }
-
-    /* Parallax de profundidad: solo escritorio, imágenes grandes.
-       El marco recorta y la imagen queda ligeramente sobredimensionada
-       para que la deriva vertical nunca deje un hueco. */
-    @media (min-width: 861px) {
-      /* El marco recorta y conserva sombra + esquinas redondeadas
-         (la sombra de la imagen quedaría cortada por overflow:hidden). */
-      .visual-box {
-        overflow: hidden;
-        border-radius: 32px;
-        box-shadow: var(--shadow-md);
-      }
-
-      .visual-box .feature-image {
-        border-radius: 0;
-        box-shadow: none;
-        animation-name: imgParallax;
-        animation-timing-function: linear;
-        animation-timeline: view();
-        animation-range: cover;
-      }
-    }
-  }
+/* Revelado de las imágenes grandes: fade + subida + leve escala.
+   La flotación (parallax) la aplica ScrollReveal.tsx por JavaScript,
+   para máxima compatibilidad y una intensidad claramente visible. */
+.feature-image.reveal {
+  transform: translateY(30px) scale(0.93);
 }
 
-@keyframes imgReveal {
-  from {
-    opacity: 0;
-    transform: scale(0.94);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+.feature-image.reveal-in {
+  transform: none;
 }
 
-@keyframes imgParallax {
-  0% {
-    opacity: 0;
-    transform: translateY(12px) scale(1.08);
-  }
-  20% {
-    opacity: 1;
-    transform: translateY(7px) scale(1.08);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(-12px) scale(1.08);
-  }
+/* La imagen flota dentro de su marco; el marco define el tamaño estable. */
+.visual-box {
+  will-change: transform;
 }
