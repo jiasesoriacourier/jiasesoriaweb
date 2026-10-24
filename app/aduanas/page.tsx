@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import RelatedLinks from "../components/RelatedLinks";
+import PlatformCTA from "../components/PlatformCTA";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -74,6 +75,11 @@ export default function Page() {
           </div>
         </div>
       </section>
+
+      <PlatformCTA
+        title="Registrá tu cuenta y solicitá cotizaciones aduaneras en línea."
+        text="Accedé a nuestra plataforma de aduanas para pedir cotizaciones, dar seguimiento a tus importaciones y exportaciones, y gestionar tus trámites desde un solo lugar."
+      />
 
       <RelatedLinks links={relatedLinks} />
     </main>

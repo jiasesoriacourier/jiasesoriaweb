@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import RelatedLinks from "../components/RelatedLinks";
+import PlatformCTA from "../components/PlatformCTA";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -73,6 +74,11 @@ export default function Page() {
           </div>
         </div>
       </section>
+
+      <PlatformCTA
+        title="Cotizá tu transporte y registrate en la plataforma en línea."
+        text="Creá tu cuenta para solicitar cotizaciones de transporte internacional y local, coordinar tu carga y dar seguimiento a cada operación desde un solo lugar."
+      />
 
       <RelatedLinks links={relatedLinks} />
     </main>
