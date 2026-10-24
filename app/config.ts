@@ -25,4 +25,6 @@ export const SITE = {
   emailCourier: "info@couriercr.com",
   emailEmpresas: "info@jiasesoria.com",
   platform: "https://couriercr.com",
+  // Plataforma de aduanas: registro de clientes y cotizaciones en línea.
+  platformAduanas: "https://aduanas.jiasesoria.com",
 } as const;

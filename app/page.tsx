@@ -1,6 +1,8 @@
 import Link from "next/link";
 import ContactForm from "./components/ContactForm";
 import AnimatedNumber from "./components/AnimatedNumber";
+import PlatformCTA from "./components/PlatformCTA";
+import { SITE } from "./config";
 
 type ServiceIconType =
   | "courier"
@@ -398,6 +400,7 @@ export default function Home() {
 
             <div className="content-actions">
               <Link href="/contacto" className="btn btn-primary">Consultar servicio aduanal</Link>
+              <a href={SITE.platformAduanas} className="btn btn-outline" target="_blank" rel="noopener noreferrer">Registrarse en la plataforma</a>
             </div>
           </div>
 
@@ -429,6 +432,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <PlatformCTA />
 
       <section id="rrhh" className="section">
         <div className="container split-grid">

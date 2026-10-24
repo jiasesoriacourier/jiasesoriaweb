@@ -2439,3 +2439,124 @@ textarea:focus-visible,
 .visual-box {
   will-change: transform;
 }
+
+/* =====================================================
+   Llamado a la acción: plataforma de aduanas en línea
+   ===================================================== */
+.platform-cta {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1.35fr 0.65fr;
+  gap: 44px;
+  align-items: center;
+  padding: 50px 54px;
+  border-radius: 28px;
+  color: #fff;
+  background:
+    radial-gradient(130% 150% at 100% 0%, rgba(217, 182, 107, 0.20), transparent 48%),
+    linear-gradient(135deg, var(--green-dark) 0%, var(--green-main) 58%, #0f7a5b 100%);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Fina línea dorada superior */
+.platform-cta::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.platform-cta-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.platform-cta-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--gold);
+  box-shadow: 0 0 0 4px rgba(217, 182, 107, 0.22);
+}
+
+.platform-cta h2 {
+  margin: 16px 0 0;
+  font-size: clamp(23px, 2.7vw, 32px);
+  font-weight: 850;
+  letter-spacing: -0.035em;
+  line-height: 1.16;
+  color: #fff;
+}
+
+.platform-cta p {
+  margin: 14px 0 0;
+  max-width: 56ch;
+  color: rgba(255, 255, 255, 0.84);
+  line-height: 1.7;
+  font-size: 15px;
+}
+
+.platform-cta-benefits {
+  list-style: none;
+  margin: 22px 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.platform-cta-benefits li {
+  font-size: 13px;
+  font-weight: 650;
+  padding: 7px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.10);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.platform-cta-benefits li::before {
+  content: "✓ ";
+  color: var(--gold);
+  font-weight: 900;
+}
+
+.platform-cta-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: stretch;
+}
+
+.platform-cta-actions .btn {
+  width: 100%;
+  text-align: center;
+}
+
+.platform-cta-login {
+  margin-top: 2px;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.82);
+  transition: color 0.2s ease;
+}
+
+.platform-cta-login:hover {
+  color: #fff;
+}
+
+@media (max-width: 860px) {
+  .platform-cta {
+    grid-template-columns: 1fr;
+    gap: 26px;
+    padding: 34px 24px;
+  }
+}
